@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ecommerceService } from "../../services/ecommerce.service";
 import ProductItems from "./ProductItems";
+import OrderItem from "../OrderPage/OrderItem";
 
 const ProductList = () => {
   const [productData, setProductData] = useState([]);
@@ -20,8 +21,9 @@ const ProductList = () => {
   useEffect(() => {
     fetchProducts({});
   }, []);
+
   return (
-    <div className="my-16 mr-0">
+    <div className="my-16 mr-0 grid grid-cols-4 gap-4">
       {productData.map((item) => (
         <ProductItems key={item.id} items={item} />
       ))}

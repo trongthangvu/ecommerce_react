@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -10,12 +11,18 @@ export default function Header() {
         <div className="space-x-5 font-medium">
           <span>Loại Hàng</span>
           <span>Cửa Hàng</span>
-          <span>Sản Phẩm</span>
           <span>
-            <i className="fa fa-shopping-cart mx-2"></i>
+            <Link style={{ textDecoration: "none" }}>Sản Phẩm</Link>
           </span>
           <span>
-            <i className="fa fa-user"></i>
+            <Link to="/order">
+              <i className="fa fa-shopping-cart mx-2"></i>
+            </Link>
+          </span>
+          <span>
+            <Link>
+              <i className="fa fa-user"></i>
+            </Link>
           </span>
         </div>
       </div>
