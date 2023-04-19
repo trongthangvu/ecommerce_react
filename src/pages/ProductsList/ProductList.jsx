@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ecommerceService } from "../../services/ecommerce.service";
 import ProductItems from "./ProductItems";
-import OrderItem from "../OrderPage/OrderItem";
 
 const ProductList = () => {
   const [productData, setProductData] = useState([]);
