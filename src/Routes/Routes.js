@@ -1,5 +1,6 @@
 import HomePage from "../pages/HomePage/HomePage";
 import OrderItem from "../pages/OrderPage/OrderItem";
+import RegisterPage from "../pages/RegisterPage/RegisterPage";
 
 export const routes = [
   {
@@ -9,5 +10,9 @@ export const routes = [
   {
     path: "/order",
     component: <OrderItem />,
+  },
+  {
+    path: "/register",
+    component: <RegisterPage />,
   },
 ];

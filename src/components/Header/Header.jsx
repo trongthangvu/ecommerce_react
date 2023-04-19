@@ -24,6 +24,9 @@ export default function Header() {
               <i className="fa fa-user"></i>
             </Link>
           </span>
+          <span>
+            <Link to="/register">Đăng ký</Link>
+          </span>
         </div>
       </div>
     </div>

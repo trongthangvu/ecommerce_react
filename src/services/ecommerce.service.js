@@ -8,4 +8,8 @@ export const ecommerceService = {
     let uri = "/products/";
     return https.get(uri, params);
   },
+  postRegister: (dataRegister) => {
+    let uri = "/users/";
+    return https.post(uri, dataRegister);
+  },
 };
