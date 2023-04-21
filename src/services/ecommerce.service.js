@@ -8,4 +8,8 @@ export const ecommerceService = {
     let uri = "/products/";
     return https.get(uri, params);
   },
+  getProductsDetail: (id) => {
+    let uri = `/products/${id}/`;
+    return https.get(uri);
+  },
 };

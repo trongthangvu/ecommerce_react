@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function OrderItem() {
   return (
     <div className="shopping-cart w-full max-w-md mx-auto rounded-md shadow-lg p-6">
       <div className="cart-header flex justify-between items-center mb-6">
         <h2 className="text-lg font-bold">Shopping Cart</h2>
-        <button className="text-gray-500 hover:text-gray-700">Close</button>
+        <button className="text-gray-500 hover:text-gray-700">
+          <Link to="/">Close</Link>
+        </button>
       </div>
       <div className="cart-items">
         <div className="cart-item flex items-center mb-4">

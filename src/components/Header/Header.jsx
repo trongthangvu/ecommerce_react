@@ -13,7 +13,9 @@ export default function Header() {
           <span>Loại Hàng</span>
           <span>Cửa Hàng</span>
           <span>
-            <Link style={{ textDecoration: "none" }}>Sản Phẩm</Link>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              Sản Phẩm
+            </Link>
           </span>
           <span>
             <Link to="/order">

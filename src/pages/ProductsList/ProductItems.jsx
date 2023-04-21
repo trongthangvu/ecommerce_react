@@ -1,14 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductItems({ items }) {
   return (
     <div className="relative card border border-black p-4 rounded-lg ">
       <div className="card-top">
-        <img src={items.image} className="w-full h-60 object-cover" alt="" />
+        <Link to={`/detail/${items.id}`}>
+          <img src={items.image} className="w-full h-60 object-cover" alt="" />
+        </Link>
       </div>
       <div className="card-bottom">
         <h2 className="text-2xl text-red-400">{items.name}</h2>
-        <p className="mb-8 ">{items.description}</p>
+        <div className="flex ">
+          <p className="mb-8 mr-12">{items.description}</p>
+          <p>{items.price}$</p>
+        </div>
+
         <button className="absolute left-0 bottom-0 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 content-center">
           Đặt hàng
         </button>

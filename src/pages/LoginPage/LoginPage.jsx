@@ -103,7 +103,7 @@ export default function LoginPage() {
                     Sign In
                   </button>
                 </div>
-                <NavLink to="/" className="xl:text-left text-right block mb-6">
+                <NavLink to="/" className="xl:text-left text-right block mb-2">
                   <i class="fa fa-arrow-left"></i> Quay về trang chủ
                 </NavLink>
                 <div className="md:inline block xl:mr-24">
