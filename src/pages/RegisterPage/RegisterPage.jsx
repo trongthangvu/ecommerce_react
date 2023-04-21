@@ -11,7 +11,7 @@ function RegisterPage() {
     password: "",
     first_name: "",
     last_name: "",
-    avatar: "",
+    avatar: null,
   });
   const inputs = [
     {
@@ -58,15 +58,14 @@ function RegisterPage() {
       errorMessage: "Name must be in correct format",
       required: true,
     },
-    {
-      id: 5,
-      name: "avatar",
-      type: "file",
-      label: "Avatar",
-      required: true,
-    },
+    // {
+    //   id: 5,
+    //   name: "avatar",
+    //   type: "file",
+    //   label: "Avatar",
+    //   required: true,
+    // },
   ];
-  let avatar = React.createRef();
   const handleSubmit = (e) => {
     e.preventDefault();
     let formData = new FormData();
@@ -74,7 +73,9 @@ function RegisterPage() {
     formData.append("password", values.password);
     formData.append("first_name", values.first_name);
     formData.append("last_name", values.last_name);
-    formData.append("avatar", values.avatar);
+    if (values.avatar) {
+      formData.append("avatar", values.avatar);
+    }
     let handleRegister = async (dataRegister) => {
       try {
         let res = await userServ.postRegister(formData);
@@ -82,18 +83,28 @@ function RegisterPage() {
         setTimeout(() => {
           navigate("/login");
         }, 1000);
+        console.log(res);
       } catch (error) {
         console.log(error);
-        message.error(error.response.data.content);
+        message.error(error.response.data.message);
       }
     };
     handleRegister(formData);
   };
 
   const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
   };
-
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    setValues({
+      ...values,
+      avatar: file,
+    });
+  };
   return (
     <div>
       <div
@@ -112,10 +123,22 @@ function RegisterPage() {
               onChange={onChange}
             />
           ))}
+          <div className="form-group">
+            <label htmlFor="avatar">Avatar</label>
+            <input
+              type="file"
+              className="form-control-file"
+              id="avatar"
+              name="avatar"
+              onChange={handleFileInputChange}
+            />
+          </div>
           <button className="buttonMovie">Đăng Ký</button>
           <div className="mb-4">
             <span>Bạn đã có tài khoản? </span>
-            <NavLink to="/login">Đăng nhập</NavLink>
+            <NavLink to="/login" className="text-purple-400">
+              Đăng nhập
+            </NavLink>
           </div>
         </form>
       </div>

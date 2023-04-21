@@ -11,7 +11,6 @@ const ProductList = () => {
     try {
       const res = await ecommerceService.getProducts(params);
       setProductData(res.data.results);
-      console.log(res.data.results);
     } catch (err) {
       console.log(err);
     }
