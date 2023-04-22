@@ -21,6 +21,7 @@ export default function Header() {
             <Link to="/order">
               <i className="fa fa-shopping-cart mx-2"></i>
             </Link>
+            <span className="cart-quantity"></span>
           </span>
           <span>
             <Link>

@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  handleDeleteAction,
+  handleChangeQuantityAction,
+} from "../../redux/action/productAction";
 
 export default function OrderItem() {
+  let dispatch = useDispatch();
+  const cartItems = useSelector(
+    (state) => state.productDetailReducer.cartItems
+  );
+  const handleChangeQuantity = (id) => {
+    dispatch(handleChangeQuantityAction(id));
+  };
+  const handleDeleteItem = (id) => {
+    dispatch(handleDeleteAction(id));
+  };
+  const total = cartItems.reduce(
+    (totalPrice, item) => totalPrice + item.price * item.quantity,
+    0
+  );
   return (
     <div className="shopping-cart w-full max-w-md mx-auto rounded-md shadow-lg p-6">
       <div className="cart-header flex justify-between items-center mb-6">
@@ -11,26 +30,35 @@ export default function OrderItem() {
         </button>
       </div>
       <div className="cart-items">
-        <div className="cart-item flex items-center mb-4">
-          <img
-            src=""
-            alt=""
-            className="w-20 h-20 object-cover rounded-md mr-4"
-          />
-          <div className="item-details">
-            <h3 className="text-lg font-medium mb-2">name</h3>
-            <p className="text-gray-600 text-sm mb-2">mota</p>
-            <p className="text-gray-700 font-medium">Price: 20</p>
-            <div className="flex items-center mt-2">
-              <input
-                type="number"
-                min="1"
-                className="w-20 h-8 border-gray-400 rounded-md px-2 mr-2"
-              />
+        {cartItems.map((item) => (
+          <div key={item.id} className="cart-item flex items-center mb-4">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-20 h-20 object-cover rounded-md mr-4"
+            />
+            <div className="item-details">
+              <h3 className="text-lg font-medium mb-2">{item.name}</h3>
+              <p className="text-gray-600 text-sm mb-2">{item.description}</p>
+              <p className="text-gray-700 font-medium">Price: {item.price}$</p>
+              <div className="flex items-center mt-2">
+                <input
+                  type="number"
+                  min="1"
+                  className="w-20 h-8 border-gray-400 rounded-md px-2 mr-2"
+                  onChange={() => handleChangeQuantity(item.id)}
+                />
+                <button
+                  onClick={() => handleDeleteItem(item.id)}
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded-md"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="font-bold py-2 px-4">Total</div>
+        ))}
+        <div className="font-bold py-2 px-4">Total: {total.toFixed(2)} $</div>
         <div className="cart-footer flex justify-end mt-6">
           <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
             Checkout

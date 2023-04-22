@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { productDetailReducer } from "../../redux/reducer/productDetailReducer";
+import { useSelector, useDispatch } from "react-redux";
+import { handleAddAction } from "../../redux/action/productAction.js";
 
 export default function ProductItems({ items }) {
+  let dispatch = useDispatch();
+  const handleAddProduct = () => {
+    dispatch(handleAddAction(items));
+  };
   return (
     <div className="relative card border border-black p-4 rounded-lg ">
       <div className="card-top">
@@ -16,7 +23,10 @@ export default function ProductItems({ items }) {
           <p>{items.price}$</p>
         </div>
 
-        <button className="absolute left-0 bottom-0 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 content-center">
+        <button
+          onClick={handleAddProduct}
+          className="absolute left-0 bottom-0 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 content-center"
+        >
           Đặt hàng
         </button>
       </div>

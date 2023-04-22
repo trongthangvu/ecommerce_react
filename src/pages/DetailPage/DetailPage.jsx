@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { layThongTinChiTietSanPham } from "../../redux/action/productAction";
 import { productDetailReducer } from "../../redux/reducer/productDetailReducer";
 import Header from "../../components/Header/Header";
@@ -15,12 +15,29 @@ export default function DetailPage() {
     // lay thong tin param tu url
     dispatch(layThongTinChiTietSanPham(id));
   }, [dispatch, id]);
-  console.log("productDetail: ", productDetail);
 
   return (
-    <div>
+    <div className="container mx-auto mt-8">
       <Header />
-      <div>DetailPage</div>
+      <div className="p-4 bg-white rounded-md shadow-md">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-xl font-bold">{productDetail.name}</h1>
+          <span className="text-gray-500">Giá: {productDetail.price}$</span>
+        </div>
+        <div className="mb-4">
+          <img
+            className="w-full rounded-md"
+            src={productDetail.image}
+            alt={productDetail.name}
+          />
+        </div>
+        <div className="flex justify-between">
+          <p className="text-gray-600">{productDetail.description}</p>
+          <button className="rounded bg-blue-400 p-1">
+            <Link to="/order">Đặt hàng</Link>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

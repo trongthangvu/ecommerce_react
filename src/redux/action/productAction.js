@@ -21,20 +21,18 @@ export const layThongTinChiTietSanPham = (id) => {
   };
 };
 
-// export const handleAddShoeAction = (item) => ({
-//   type: ADD_PRODUCT,
-//   payload: id,
-// });
-// export const handleDeleteShoeAction = (idItem) => ({
-//   type: DELETE_PRODUCT,
-//   payload: {
-//     idItem,
-//   },
-// });
-// export const handleChangeQuantityAction = (idItem, value) => ({
-//   type: CHANGE_QUANTITY,
-//   payload: {
-//     idItem,
-//     value,
-//   },
-// });
+export const handleAddAction = (item) => ({
+  type: ADD_PRODUCT,
+  payload: item,
+});
+export const handleDeleteAction = (idItem) => ({
+  type: DELETE_PRODUCT,
+  payload: idItem,
+});
+export const handleChangeQuantityAction = (idItem, value) => ({
+  type: CHANGE_QUANTITY,
+  payload: {
+    idItem,
+    value,
+  },
+});
