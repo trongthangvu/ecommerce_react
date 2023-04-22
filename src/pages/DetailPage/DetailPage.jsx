@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { layThongTinChiTietSanPham } from "../../redux/action/productAction";
+import {
+  layThongTinChiTietSanPham,
+  handleAddAction,
+} from "../../redux/action/productAction";
 import { productDetailReducer } from "../../redux/reducer/productDetailReducer";
 import Header from "../../components/Header/Header";
 
@@ -15,7 +18,9 @@ export default function DetailPage() {
     // lay thong tin param tu url
     dispatch(layThongTinChiTietSanPham(id));
   }, [dispatch, id]);
-
+  const handleAddProduct = (items) => {
+    dispatch(handleAddAction(items));
+  };
   return (
     <div className="container mx-auto mt-8">
       <Header />
@@ -33,7 +38,10 @@ export default function DetailPage() {
         </div>
         <div className="flex justify-between">
           <p className="text-gray-600">{productDetail.description}</p>
-          <button className="rounded bg-blue-400 p-1">
+          <button
+            onClick={() => handleAddProduct(productDetail)}
+            className="rounded bg-blue-400 p-1"
+          >
             <Link to="/order">Đặt hàng</Link>
           </button>
         </div>

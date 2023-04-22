@@ -1,8 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UserNav from "./UserNav";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const cartItems = useSelector(
+    (state) => state.productDetailReducer.cartItems
+  );
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   return (
     <div className="shadow-lg sticky top-0 z-30 w-full px-2 py-2 bg-white sm:px-4 ">
       <div className="container mx-auto flex justify-between items-center h-20">
@@ -21,7 +29,7 @@ export default function Header() {
             <Link to="/order">
               <i className="fa fa-shopping-cart mx-2"></i>
             </Link>
-            <span className="cart-quantity"></span>
+            <span className="cart-quantity">{totalQuantity}</span>
           </span>
           <span>
             <Link>

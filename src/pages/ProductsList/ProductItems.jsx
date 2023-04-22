@@ -25,7 +25,7 @@ export default function ProductItems({ items }) {
 
         <button
           onClick={handleAddProduct}
-          className="absolute left-0 bottom-0 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 content-center"
+          className="absolute left-0 bottom-0 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 content-center rounded"
         >
           Đặt hàng
         </button>

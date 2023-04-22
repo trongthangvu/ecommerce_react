@@ -11,12 +11,13 @@ export default function OrderItem() {
   const cartItems = useSelector(
     (state) => state.productDetailReducer.cartItems
   );
-  const handleChangeQuantity = (id) => {
-    dispatch(handleChangeQuantityAction(id));
+  const handleChangeQuantity = (id, value) => {
+    dispatch(handleChangeQuantityAction(id, value));
   };
   const handleDeleteItem = (id) => {
     dispatch(handleDeleteAction(id));
   };
+
   const total = cartItems.reduce(
     (totalPrice, item) => totalPrice + item.price * item.quantity,
     0
@@ -45,8 +46,11 @@ export default function OrderItem() {
                 <input
                   type="number"
                   min="1"
+                  defaultValue="1"
                   className="w-20 h-8 border-gray-400 rounded-md px-2 mr-2"
-                  onChange={() => handleChangeQuantity(item.id)}
+                  onChange={(e) =>
+                    handleChangeQuantity(item.id, parseInt(e.target.value))
+                  }
                 />
                 <button
                   onClick={() => handleDeleteItem(item.id)}
