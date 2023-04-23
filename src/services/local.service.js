@@ -37,6 +37,6 @@ export let cartLocal = {
     }
   },
   remove: () => {
-    localStorage.removeItem(USER_INFOR);
+    localStorage.removeItem(CART_LOCAL);
   },
 };

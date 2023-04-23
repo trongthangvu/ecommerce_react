@@ -14,7 +14,6 @@ export default function OrderItem() {
   const cartItems = useSelector(
     (state) => state.productDetailReducer.cartItems
   );
-
   const handleChangeQuantity = (id, value) => {
     dispatch(handleChangeQuantityAction(id, value));
   };
