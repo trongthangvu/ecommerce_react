@@ -3,6 +3,7 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   CHANGE_QUANTITY,
+  CHECKOUT,
 } from "../constants/productConstant";
 
 const initialState = {
@@ -53,6 +54,11 @@ export let productDetailReducer = (state = initialState, action) => {
       );
       return { ...state, cartItems: newCartItems };
     }
+    case CHECKOUT:
+      return {
+        ...state,
+        cartItems: [],
+      };
     default:
       return state;
   }

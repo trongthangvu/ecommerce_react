@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   handleDeleteAction,
   handleChangeQuantityAction,
+  handleCheckoutAction,
 } from "../../redux/action/productAction";
 
 export default function OrderItem() {
@@ -11,13 +12,17 @@ export default function OrderItem() {
   const cartItems = useSelector(
     (state) => state.productDetailReducer.cartItems
   );
+
   const handleChangeQuantity = (id, value) => {
     dispatch(handleChangeQuantityAction(id, value));
   };
   const handleDeleteItem = (id) => {
     dispatch(handleDeleteAction(id));
   };
-
+  const handleCheckout = () => {
+    dispatch(handleCheckoutAction());
+    alert("Thanh toán thành công!");
+  };
   const total = cartItems.reduce(
     (totalPrice, item) => totalPrice + item.price * item.quantity,
     0
@@ -46,8 +51,8 @@ export default function OrderItem() {
                 <input
                   type="number"
                   min="1"
-                  defaultValue="1"
                   className="w-20 h-8 border-gray-400 rounded-md px-2 mr-2"
+                  value={item.quantity}
                   onChange={(e) =>
                     handleChangeQuantity(item.id, parseInt(e.target.value))
                   }
@@ -64,7 +69,10 @@ export default function OrderItem() {
         ))}
         <div className="font-bold py-2 px-4">Total: {total.toFixed(2)} $</div>
         <div className="cart-footer flex justify-end mt-6">
-          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
+          <button
+            onClick={handleCheckout}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+          >
             Checkout
           </button>
         </div>

@@ -3,6 +3,7 @@ import {
   DELETE_PRODUCT,
   CHANGE_QUANTITY,
   PRODUCT_DETAIL,
+  CHECKOUT,
 } from "../constants/productConstant";
 import { ecommerceService } from "../../services/ecommerce.service";
 
@@ -35,4 +36,7 @@ export const handleChangeQuantityAction = (idItem, value) => ({
     idItem,
     value,
   },
+});
+export const handleCheckoutAction = () => ({
+  type: CHECKOUT,
 });
