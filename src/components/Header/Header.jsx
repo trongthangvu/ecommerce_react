@@ -17,12 +17,18 @@ export default function Header() {
     setShowCategory(!showCategory);
   };
   const [categories, setCategories] = useState([]);
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/categories/");
+      const data = await response.json();
+      setCategories(data.results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/categories/")
-      .then((response) => response.json())
-      .then((data) => setCategories(data.results))
-      .catch((error) => console.error(error));
+    fetchCategories({});
   }, []);
 
   return (
