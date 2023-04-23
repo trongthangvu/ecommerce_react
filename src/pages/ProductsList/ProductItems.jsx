@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { productDetailReducer } from "../../redux/reducer/productDetailReducer";
 import { useSelector, useDispatch } from "react-redux";
 import { handleAddAction } from "../../redux/action/productAction.js";
+import { userInforLocal, cartLocal } from "../../services/local.service";
 
 export default function ProductItems({ items }) {
   let dispatch = useDispatch();
   const handleAddProduct = () => {
     dispatch(handleAddAction(items));
+    cartLocal.set(items);
   };
   return (
     <div className="relative card border border-black p-4 rounded-lg ">

@@ -6,6 +6,8 @@ import {
   handleChangeQuantityAction,
   handleCheckoutAction,
 } from "../../redux/action/productAction";
+import { userInforLocal } from "../../services/local.service";
+import { https } from "../../services/urlConfig";
 
 export default function OrderItem() {
   let dispatch = useDispatch();
@@ -19,9 +21,25 @@ export default function OrderItem() {
   const handleDeleteItem = (id) => {
     dispatch(handleDeleteAction(id));
   };
-  const handleCheckout = () => {
-    dispatch(handleCheckoutAction());
-    alert("Thanh toán thành công!");
+  const handleCheckout = async () => {
+    const user = userInforLocal.get();
+    if (!user) {
+      alert("Bạn cần đăng nhập để thanh toán.");
+      return;
+    }
+    const data = {
+      user: user.id,
+      complete: true,
+    };
+    try {
+      const response = await https.post("/orders/", data);
+      console.log(response.data); // log data trả về từ server
+      dispatch(handleCheckoutAction());
+      alert("Thanh toán thành công!");
+    } catch (error) {
+      console.log(error);
+      alert("Lỗi khi thanh toán!");
+    }
   };
   const total = cartItems.reduce(
     (totalPrice, item) => totalPrice + item.price * item.quantity,

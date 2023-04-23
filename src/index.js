@@ -14,6 +14,7 @@ export const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
+
 root.render(
   <Provider store={store}>
     <App />

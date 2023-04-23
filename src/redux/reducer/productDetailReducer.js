@@ -59,6 +59,7 @@ export let productDetailReducer = (state = initialState, action) => {
         ...state,
         cartItems: [],
       };
+
     default:
       return state;
   }
