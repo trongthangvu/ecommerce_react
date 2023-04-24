@@ -22,7 +22,13 @@ export default function UserNav() {
     if (userInfor) {
       return (
         <div className="flex items-center">
-          <img width={40} src={userInfor.image} alt="" />
+          <img
+            className="rounded-full"
+            width={40}
+            hight={20}
+            src={userInfor.image}
+            alt=""
+          />
           <span className="mx-4 text-blue-500 font-medium text-lg">
             {userInfor.username}
           </span>

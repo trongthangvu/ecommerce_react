@@ -12,7 +12,6 @@ export default function Header() {
     0
   );
   const [showCategory, setShowCategory] = useState(false);
-
   const handleCategoryClick = () => {
     setShowCategory(!showCategory);
   };
@@ -67,7 +66,13 @@ export default function Header() {
             </div>
           )}
           <span>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link
+              to="/"
+              style={{ textDecoration: "none" }}
+              onClick={() => {
+                dispatch(setSelectedCategory(null));
+              }}
+            >
               Sản Phẩm
             </Link>
           </span>
@@ -78,7 +83,7 @@ export default function Header() {
             <span className="cart-quantity">{totalQuantity}</span>
           </span>
           <span>
-            <Link>
+            <Link to="/user">
               <i className="fa fa-user"></i>
             </Link>
           </span>

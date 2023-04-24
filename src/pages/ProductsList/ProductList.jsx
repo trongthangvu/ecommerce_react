@@ -6,6 +6,7 @@ import Pagination from "react-bootstrap/Pagination";
 import { productDetailReducer } from "../../redux/reducer/productDetailReducer";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedCategory } from "../../redux/action/productAction.js";
+
 const ProductList = () => {
   const [productData, setProductData] = useState([]);
   const [page, setPage] = useState(1);
@@ -13,6 +14,7 @@ const ProductList = () => {
     (state) => state.productDetailReducer.selectedCategoryId
   );
   const dispatch = useDispatch();
+
   const fetchProducts = async () => {
     const params = {
       page: page,
@@ -37,7 +39,7 @@ const ProductList = () => {
 
   const renderPaginationItems = () => {
     const items = [];
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 2; i++) {
       items.push(
         <Pagination.Item key={i} onClick={() => handleClick(i)}>
           <Link to={`/?page=${i}`}>{i}</Link>
