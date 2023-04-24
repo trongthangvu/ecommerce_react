@@ -4,6 +4,7 @@ import {
   DELETE_PRODUCT,
   CHANGE_QUANTITY,
   CHECKOUT,
+  SET_SELECTED_CATEGORY,
 } from "../constants/productConstant";
 
 const initialState = {
@@ -59,6 +60,8 @@ export let productDetailReducer = (state = initialState, action) => {
         ...state,
         cartItems: [],
       };
+    case SET_SELECTED_CATEGORY:
+      return { ...state, selectedCategoryId: action.payload };
 
     default:
       return state;

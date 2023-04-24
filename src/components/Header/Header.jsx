@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UserNav from "./UserNav";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedCategory } from "../../redux/action/productAction.js";
 export default function Header() {
   const cartItems = useSelector(
     (state) => state.productDetailReducer.cartItems
@@ -18,6 +18,7 @@ export default function Header() {
   };
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null); // thêm state để lưu trữ ID danh mục được chọn
+  const dispatch = useDispatch();
 
   const fetchCategories = async () => {
     try {
@@ -30,8 +31,8 @@ export default function Header() {
   };
   const handleCategorySelect = (categoryId) => {
     setSelectedCategoryId(categoryId);
+    dispatch(setSelectedCategory(categoryId));
     setShowCategory(false);
-    console.log(categoryId);
   };
   useEffect(() => {
     fetchCategories({});
@@ -56,6 +57,7 @@ export default function Header() {
               {categories.map((category) => (
                 <Link
                   key={category.id}
+                  to={`/?page=${1}/?category=${category.id}`}
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                   onClick={() => handleCategorySelect(category.id)} // thêm sự kiện khi click vào danh mục
                 >

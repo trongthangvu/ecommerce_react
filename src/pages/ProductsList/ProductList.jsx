@@ -3,18 +3,25 @@ import { ecommerceService } from "../../services/ecommerce.service";
 import ProductItems from "./ProductItems";
 import { Link } from "react-router-dom";
 import Pagination from "react-bootstrap/Pagination";
-
+import { productDetailReducer } from "../../redux/reducer/productDetailReducer";
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedCategory } from "../../redux/action/productAction.js";
 const ProductList = () => {
   const [productData, setProductData] = useState([]);
   const [page, setPage] = useState(1);
-
+  const selectedCategory = useSelector(
+    (state) => state.productDetailReducer.selectedCategoryId
+  );
+  const dispatch = useDispatch();
   const fetchProducts = async () => {
     const params = {
       page: page,
+      category: selectedCategory,
     };
     try {
       const res = await ecommerceService.getProducts(params);
       setProductData(res.data.results);
+      dispatch(setSelectedCategory(selectedCategory));
     } catch (err) {
       console.log(err);
     }
@@ -22,7 +29,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [page]);
+  }, [page, selectedCategory]);
 
   const handleClick = (pageNumber) => {
     setPage(pageNumber);

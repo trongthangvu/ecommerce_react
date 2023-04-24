@@ -4,6 +4,7 @@ import {
   CHANGE_QUANTITY,
   PRODUCT_DETAIL,
   CHECKOUT,
+  SET_SELECTED_CATEGORY,
 } from "../constants/productConstant";
 import { ecommerceService } from "../../services/ecommerce.service";
 
@@ -39,4 +40,8 @@ export const handleChangeQuantityAction = (idItem, value) => ({
 });
 export const handleCheckoutAction = () => ({
   type: CHECKOUT,
+});
+export const setSelectedCategory = (categoryId) => ({
+  type: SET_SELECTED_CATEGORY,
+  payload: categoryId,
 });
