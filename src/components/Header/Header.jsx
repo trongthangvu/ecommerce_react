@@ -17,6 +17,8 @@ export default function Header() {
     setShowCategory(!showCategory);
   };
   const [categories, setCategories] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null); // thêm state để lưu trữ ID danh mục được chọn
+
   const fetchCategories = async () => {
     try {
       const response = await fetch("http://127.0.0.1:8000/categories/");
@@ -26,11 +28,14 @@ export default function Header() {
       console.error(error);
     }
   };
-
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategoryId(categoryId);
+    setShowCategory(false);
+    console.log(categoryId);
+  };
   useEffect(() => {
     fetchCategories({});
   }, []);
-
   return (
     <div className="shadow-lg sticky top-0 z-30 w-full px-2 py-2 bg-white sm:px-4 ">
       <div className="container mx-auto flex justify-between items-center h-20">
@@ -51,8 +56,8 @@ export default function Header() {
               {categories.map((category) => (
                 <Link
                   key={category.id}
-                  to={`/category/${category.id}`}
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                  onClick={() => handleCategorySelect(category.id)} // thêm sự kiện khi click vào danh mục
                 >
                   {category.name}
                 </Link>
