@@ -12,8 +12,8 @@ export const ecommerceService = {
     let uri = `/products/${id}/`;
     return https.get(uri);
   },
-  getHistoryOrder: (params) => {
+  getHistoryOrder: (userId) => {
     let uri = "/orders/";
-    return https.get(uri, { params });
+    return https.get(uri, { params: { user: userId } });
   },
 };

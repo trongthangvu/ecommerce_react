@@ -44,7 +44,13 @@ export default function Header() {
         </span>
         <div className="space-x-5 font-medium">
           <span>
-            <Link style={{ textDecoration: "none" }} to="/">
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/"
+              onClick={() => {
+                dispatch(setSelectedCategory(null));
+              }}
+            >
               Cửa Hàng
             </Link>
           </span>

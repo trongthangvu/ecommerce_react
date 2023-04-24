@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import {
   handleDeleteAction,
   handleChangeQuantityAction,
@@ -36,7 +38,6 @@ export default function OrderItem() {
     };
     try {
       const response = await https.post("/orders/", data);
-      console.log(response.data); // log data trả về từ server
       dispatch(handleCheckoutAction());
       alert("Thanh toán thành công!");
     } catch (error) {
@@ -90,11 +91,8 @@ export default function OrderItem() {
         ))}
         <div className="font-bold py-2 px-4">Total: {total.toFixed(2)} $</div>
         <div className="cart-footer flex justify-end mt-6">
-          <button
-            onClick={handleCheckout}
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
-          >
-            Checkout
+          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
+            <Link to="/shipping">Checkout</Link>
           </button>
         </div>
       </div>
