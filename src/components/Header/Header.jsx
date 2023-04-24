@@ -56,7 +56,6 @@ export default function Header() {
               {categories.map((category) => (
                 <Link
                   key={category.id}
-                  to={`/?page=${1}/?category=${category.id}`}
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                   onClick={() => handleCategorySelect(category.id)} // thêm sự kiện khi click vào danh mục
                 >

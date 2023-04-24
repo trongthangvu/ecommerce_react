@@ -46,6 +46,7 @@ const ProductList = () => {
         </Pagination.Item>
       );
     }
+
     return items;
   };
 

@@ -9,7 +9,6 @@ export default function UserInfoPage() {
     const user = userInforLocal.get();
     setUserInfor(user);
   }, []);
-  console.log(userInfor);
   if (!userInfor) {
     return (
       <div className="flex flex-col justify-center items-center h-screen">
@@ -41,6 +40,7 @@ export default function UserInfoPage() {
         </div>
         <div className="mt-4">
           <Link
+            to="/history"
             style={{ textDecoration: "none" }}
             className="p-6 text-white bg-blue-400 hover:bg-blue-600 rounded-full"
           >

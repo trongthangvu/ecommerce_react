@@ -26,6 +26,10 @@ export default function OrderItem() {
       alert("Bạn cần đăng nhập để thanh toán.");
       return;
     }
+    if (cartItems.length === 0) {
+      alert("Bạn cần chọn sản phẩm để thanh toán.");
+      return;
+    }
     const data = {
       user: user.id,
       complete: true,
