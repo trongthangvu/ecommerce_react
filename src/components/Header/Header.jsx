@@ -21,7 +21,7 @@ export default function Header() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/categories/");
+      const response = await fetch("http://127.0.0.1:8080/categories/");
       const data = await response.json();
       setCategories(data.results);
     } catch (error) {
@@ -45,7 +45,7 @@ export default function Header() {
         <div className="space-x-5 font-medium">
           <span>
             <Link style={{ textDecoration: "none" }} to="/">
-              Cửa Hàng
+              Trang chủ
             </Link>
           </span>
           <span className="cursor-pointer" onClick={handleCategoryClick}>
