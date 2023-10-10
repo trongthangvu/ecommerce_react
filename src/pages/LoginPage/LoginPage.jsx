@@ -31,9 +31,9 @@ export default function LoginPage() {
         grant_type: "password",
         username: values.username,
         password: values.password,
-        client_id: "PhBEZ4gP0ZZQ7iADANrM8kNw4SVSKQ1DJt7QoEjW",
+        client_id: "RgoVMWevCzWvbJ7Ndl3cK3bHEH9SlzsmC0sgDObe",
         client_secret:
-          "ItlxuZSG0JgtEQvULo91CrQun06lBE9WjFkeTGs0QnKH78bC6CQ2LOAsdUFXG5Djo5fblufLfMCk5JdacX5WBwz0Yk2G3kpxHV8NeLAo6MqYQ3YncZKwNQa4dABdyRsd",
+          "91BSg0o5QBqh8Xo9036vKEhHq845JjWGpdzj6IEzxC3KwR13IiClg3ttayjzdCygZ3K3SSJg0C9czqk3uqVG9xUZP39wuaIzRDIx90hQBZvtc6WbwB4ex5jUqbzvUPQp",
       });
       https.defaults.headers["Authorization"] =
         "Bearer " + response.data.access_token;
@@ -104,12 +104,12 @@ export default function LoginPage() {
                   </button>
                 </div>
                 <NavLink to="/" className="xl:text-left text-right block mb-2">
-                  <i class="fa fa-arrow-left"></i> Quay về trang chủ
+                  <i class="fa fa-arrow-left"></i> Back to Home Page
                 </NavLink>
                 <div className="md:inline block xl:mr-24">
-                  <span className="text-black">Bạn chưa có tài khoản? </span>
+                  <span className="text-black">You don't have an account?</span>
                   <NavLink to="/register">
-                    <span className="text-red-600 ">Đăng ký</span>
+                    <span className="text-red-600 ">Register</span>
                   </NavLink>
                 </div>
               </form>

@@ -130,15 +130,6 @@ export default function Footer() {
       <div className="py-6 text-sm text-center dark:text-gray-400 ">
         © 2023 Vũ Trọng Thắng
       </div>
-      <div>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/jpTGDGxmOig"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </div>
     </footer>
   );
 }

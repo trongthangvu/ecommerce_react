@@ -11,6 +11,8 @@ function RegisterPage() {
     password: "",
     first_name: "",
     last_name: "",
+    address: "",
+    phone_number: "",
     avatar: null,
   });
   const inputs = [
@@ -58,13 +60,26 @@ function RegisterPage() {
       errorMessage: "Name must be in correct format",
       required: true,
     },
-    // {
-    //   id: 5,
-    //   name: "avatar",
-    //   type: "file",
-    //   label: "Avatar",
-    //   required: true,
-    // },
+    {
+      id: 5,
+      name: "address",
+      type: "text",
+      placeholder: "address",
+      label: "address",
+      pattern: "^[a-zA-Z0-9 /.-]+$",
+      errorMessage: "Please enter your address",
+      required: true,
+    },
+    {
+      id: 6,
+      name: "phone_number",
+      type: "text",
+      placeholder: "phone_number",
+      label: "phone_number",
+      errorMessage: "Please enter your phone_number",
+      pattern: "^[0-9]+$",
+      required: true,
+    },
   ];
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,6 +88,8 @@ function RegisterPage() {
     formData.append("password", values.password);
     formData.append("first_name", values.first_name);
     formData.append("last_name", values.last_name);
+    formData.append("address", values.address);
+    formData.append("phone_number", values.phone_number);
     if (values.avatar) {
       formData.append("avatar", values.avatar);
     }
@@ -114,7 +131,7 @@ function RegisterPage() {
         }}
       >
         <form className="formMovie" onSubmit={handleSubmit}>
-          <h1 className="h1text text-2xl">Đăng ký</h1>
+          <h1 className="h1text text-2xl">Register</h1>
           {inputs.map((input) => (
             <FormInput
               key={input.id}
@@ -133,11 +150,11 @@ function RegisterPage() {
               onChange={handleFileInputChange}
             />
           </div>
-          <button className="buttonMovie">Đăng Ký</button>
+          <button className="buttonMovie">Register</button>
           <div className="mb-4">
-            <span>Bạn đã có tài khoản? </span>
+            <span>Have you got an account? </span>
             <NavLink to="/login" className="text-purple-400">
-              Đăng nhập
+              Login
             </NavLink>
           </div>
         </form>
