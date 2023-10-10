@@ -39,7 +39,8 @@ export default function LoginPage() {
         "Bearer " + response.data.access_token;
       const userResponse = await https.get("/users/current-user/");
       dispatch(setUser(userResponse.data));
-      userInforLocal.set(userResponse.data);
+      userInforLocal.set(userResponse.data, response.data.access_token);
+      // userInforLocal.set(response.data.access_token);
       message.success("Đăng nhập thành công");
       setTimeout(() => {
         navigate("/");

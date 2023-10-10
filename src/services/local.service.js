@@ -3,8 +3,8 @@ let CART_LOCAL = "CART_LOCAL";
 
 export let userInforLocal = {
   // set lưu xuống
-  set: (userData) => {
-    let json = JSON.stringify(userData);
+  set: (userData, data) => {
+    let json = JSON.stringify(userData, data);
     localStorage.setItem(USER_INFOR, json);
   },
   get: () => {
