@@ -90,9 +90,17 @@ export default function OrderItem() {
           </div>
         ))}
         <div className="font-bold py-2 px-4">Total: {total.toFixed(2)} $</div>
-        <div className="cart-footer flex justify-end mt-6">
+        {/* <div className="cart-footer flex justify-end mt-6">
           <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
             <Link to="/shipping">Checkout</Link>
+          </button>
+        </div> */}
+        <div className="cart-footer flex justify-end mt-6">
+          <button
+            onClick={handleCheckout}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+          >
+            Checkout
           </button>
         </div>
       </div>

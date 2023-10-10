@@ -31,9 +31,9 @@ export default function LoginPage() {
         grant_type: "password",
         username: values.username,
         password: values.password,
-        client_id: "PhBEZ4gP0ZZQ7iADANrM8kNw4SVSKQ1DJt7QoEjW",
+        client_id: "iBBJee2Qs17KxZs9rWBkylnjSZ1o8LhVYPwsDFTz",
         client_secret:
-          "ItlxuZSG0JgtEQvULo91CrQun06lBE9WjFkeTGs0QnKH78bC6CQ2LOAsdUFXG5Djo5fblufLfMCk5JdacX5WBwz0Yk2G3kpxHV8NeLAo6MqYQ3YncZKwNQa4dABdyRsd",
+          "g6fOPiGRg90HTfJIR35kZHUEYiu4zAkETCT5s6CNsgEp0LLDkL5wRmw6yzbtPEONWUObUcYgidttYgGBK1fwxDklOwYXLfXPhFJZvVXxtdFVfkM4iQTFQiy9gMpBY4Md",
       });
       https.defaults.headers["Authorization"] =
         "Bearer " + response.data.access_token;
