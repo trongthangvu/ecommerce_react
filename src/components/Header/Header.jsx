@@ -46,7 +46,7 @@ export default function Header() {
           <span>
             <Link
               style={{ textDecoration: "none" }}
-              to="/"
+              to="/storeinfo"
               onClick={() => {
                 dispatch(setSelectedCategory(null));
               }}
