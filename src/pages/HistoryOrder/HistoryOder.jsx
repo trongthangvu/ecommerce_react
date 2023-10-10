@@ -39,6 +39,11 @@ export default function HistoryOder() {
                   Giờ đặt hàng:{" "}
                   {format(new Date(item.date_ordered), "HH:mm:ss")}
                 </p>
+                <p className="mt-1">Địa chỉ: {userInfor.address}</p>
+                <p className="mt-1">Số điện thoại: {userInfor.phone_number}</p>
+                <p className="mt-1">
+                  Tên: {userInfor.first_name} {userInfor.last_name}
+                </p>
                 <p className="mt-1 font-bold text-green-500">
                   Tình trạng: Đặt hàng thành công
                 </p>

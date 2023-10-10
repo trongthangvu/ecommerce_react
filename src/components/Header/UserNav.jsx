@@ -29,8 +29,11 @@ export default function UserNav() {
             src={userInfor.image}
             alt=""
           />
-          <span className="mx-4 text-blue-500 font-medium text-lg">
-            {userInfor.username}
+          <span className="mr-2 ml-4 text-blue-500 font-medium text-lg">
+            {userInfor.first_name}
+          </span>
+          <span className="mr-4 text-blue-500 font-medium text-lg">
+            {userInfor.last_name}
           </span>
           <button
             onClick={handleLogout}
