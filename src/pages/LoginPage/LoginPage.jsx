@@ -23,7 +23,6 @@ export default function LoginPage() {
     }
     // kiểm tra nếu user đã đăng nhập thì chuyển hướng về trang chủ
   }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -39,9 +38,10 @@ export default function LoginPage() {
         "Bearer " + response.data.access_token;
       const userResponse = await https.get("/users/current-user/");
       dispatch(setUser(userResponse.data));
-      userInforLocal.set(userResponse.data, response.data.access_token);
-      // userInforLocal.set(response.data.access_token);
       message.success("Đăng nhập thành công");
+      localStorage.setItem("token", response.data.access_token);
+      userInforLocal.set(userResponse.data);
+
       setTimeout(() => {
         navigate("/");
       }, 1000);
