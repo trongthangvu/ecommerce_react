@@ -34,6 +34,8 @@ export default function UserInfoPage() {
           {userInfor.first_name} {userInfor.last_name}
         </p>
         <p className="text-gray-500">Tài khoản: {userInfor.username}</p>
+        <p className="text-gray-500">Địa chỉ: {userInfor.address}</p>
+        <p className="text-gray-500">Số điện thoại: {userInfor.phone_number}</p>
         <div className="space-x-4">
           {/* <p className="text-gray-500">Email: {userInfor.email}</p>
       <p className="text-gray-500">Số điện thoại: {userInfor.phone}</p> */}
