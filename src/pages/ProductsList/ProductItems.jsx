@@ -9,6 +9,7 @@ export default function ProductItems({ items }) {
   let dispatch = useDispatch();
   const handleAddProduct = () => {
     dispatch(handleAddAction(items));
+    cartLocal.set(items);
   };
   return (
     <div className="relative card border border-black p-4 rounded-lg ">

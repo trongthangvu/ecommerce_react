@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_LOGIN } from "../../redux/constants/userConstants";
-import { userInforLocal } from "../../services/local.service";
+import { userInforLocal, cartLocal } from "../../services/local.service";
 
 export default function UserNav() {
   let userInfor = useSelector((state) => {
@@ -16,6 +16,8 @@ export default function UserNav() {
       type: SET_LOGIN,
       payload: null,
     });
+    cartLocal.remove();
+    localStorage.removeItem("token");
   };
 
   let renderContent = () => {
